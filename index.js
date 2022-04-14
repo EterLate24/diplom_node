@@ -19,6 +19,8 @@ app.set('view engine', 'hbs')
 app.set('views', 'views')
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(express.urlencoded({extended:true}))
+
 app.use(routes)
 
 async function start() {

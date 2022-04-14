@@ -1,24 +1,24 @@
-<h2>Sosi bolt!</h2>
+<h2>Create page</h2>
 
-{{#if pisi.length}}
+{{#if massiv.length}}
 <ul>
-    {{#each pisi}}
+    {{#each massiv}}
     <li>
         <label>
             {{#if completed}}
                 <input type="checkbox" checked>
-                <span>{{title}}</span>
+                <h5>{{name}}</h5>
             {{else}}
                 <input type="checkbox" name="" id="">
-                <span>{{title}}</span>
+                <span>{{name}}</span>
             {{/if}}
 
 
-            <button>loh</button>
+            <button>create</button>
         </label>
     </li>
     {{/each}}
 </ul>
 {{else}}
-<h3>nihuya tyt net!</h3>
+<h3>pustoi massiv</h3>
 {{/if}}

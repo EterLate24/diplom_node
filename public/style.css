@@ -1,4 +1,91 @@
+body{
+    margin: 0;
+    font-family: Nunito Sans, sans-serif;
+    font-size: 16px;
+    color: #191919;
+} 
+
+*,
+*:before,
+*::after{
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, h7, h8{
+    margin: 0;
+}
+
+/*-----------------------------------------------------------Container*/
+
 .container{
+    /* text-align: center; */
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/*-----------------------------------------------------------Header*/
+
+.header{ 
+    height: 64px;
+    /* width: 100%; */
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #191919;
+    background-color: #DCDCDC;
+
+    
+}
+
+.header_inner{
+    padding-top: 38px;
+    padding-bottom: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+} 
+
+/*----------------------------------------------------------Navigation*/
+
+.nav{
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+.nav_link{
+    margin-left: 50px;
+    color: #666363;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.3s linear;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.nav_link:first-child{
+    margin-left: 0;
+}
+
+
+
+.nav_link:hover{
+    color: black;
+    opacity: 1;
     text-decoration: underline;
-    color: aqua;
+  
+}
+
+.nav_link_active{
+  margin-left: 50px;
+  color: black;
+  text-decoration:underline;
+  align-items: center;
 }
