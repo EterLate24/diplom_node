@@ -1,8 +1,13 @@
 const{Router} = require('express')
+const model = require('../models/model')
 const router = Router()
 
-router.get('/', (req, res) =>{
-    res.render('index')
+router.get('/', async (req, res) =>{
+    const pisi = await model.find({})
+    res.render('index',{
+        title: 'Здрасьте',
+        pisi
+    })
 })
 
 module.exports = router
