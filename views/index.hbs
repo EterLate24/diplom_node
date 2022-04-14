@@ -1,1 +1,24 @@
 <h2>Sosi bolt!</h2>
+
+{{#if pisi.length}}
+<ul>
+    {{#each pisi}}
+    <li>
+        <label>
+            {{#if completed}}
+                <input type="checkbox" checked>
+                <span>{{title}}</span>
+            {{else}}
+                <input type="checkbox" name="" id="">
+                <span>{{title}}</span>
+            {{/if}}
+
+
+            <button>loh</button>
+        </label>
+    </li>
+    {{/each}}
+</ul>
+{{else}}
+<h3>nihuya tyt net!</h3>
+{{/if}}
