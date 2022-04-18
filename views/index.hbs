@@ -4,18 +4,21 @@
 <ul>
     {{#each massiv}}
     <li>
-        <label>
-            {{#if completed}}
-                <input type="checkbox" checked>
+        <form action="/complete" method="POST">
+            <label>
+                {{#if completed}}
+                <input type="checkbox" checked name="completed">
                 <h5>{{name}}</h5>
-            {{else}}
-                <input type="checkbox" name="" id="">
+                {{else}}
+                <input type="checkbox" name="completed">
                 <span>{{name}}</span>
-            {{/if}}
+                {{/if}}
+                <input type="hidden" value="{{_id}}" name="id">
 
 
-            <button>create</button>
-        </label>
+                <button type="submit">Save</button>
+            </label>
+        </form>
     </li>
     {{/each}}
 </ul>

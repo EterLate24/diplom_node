@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const { route } = require('express/lib/application')
 const model = require('../models/model')
 const router = Router()
 
@@ -11,7 +12,7 @@ router.get('/', async (req, res) => {
     })
 })
 
-router.get('/create',  (req, res) => {
+router.get('/create', (req, res) => {
     res.render('create', {
         title: 'Создание',
     })
@@ -25,6 +26,17 @@ router.post('/create', async (req, res) => {
     res.redirect('/')
 
 })
+
+router.post('/complete', async (req, res) => {
+    const poc = await model.findById(req.body.id)
+
+    poc.completed = !!req.body.completed
+    await poc.save()
+    res.redirect('/')
+
+
+}
+)
 
 
 
