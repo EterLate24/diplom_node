@@ -1,36 +1,72 @@
-<header class="header">
-        <li class="nav">
-            {{#if table}}
+ <header class="header">
+            <nav class="nav">
+                <ul>
+                    {{#if home}}
+                    <li class="list active">
+                        <a href="/">
+                            <span class="icon">
+                                <ion-icon name="home-outline"></ion-icon>
+                            </span>
+                            <span class="text">Главная</span>
+                        </a>
+                    </li>
+                    {{else}}
+                    <li class="list">
+                        <a href="/">
+                            <span class="icon">
+                                <ion-icon name="home-outline"></ion-icon>
+                            </span>
+                            <span class="text">Главная</span>
+                        </a>
+                    </li>
+                    {{/if}}
+                    {{#if create_application}}
+                    <li class="list active">
+                        <a href="/create_application">
+                            <span class="icon">
+                                <ion-icon name="call-outline"></ion-icon>
+                            </span>
+                            <span class="text">Записаться на ремонт</span>
+                        </a>
+                    </li>
+                    {{else}}
+                    <li class="list">
+                        <a href="/create_application">
+                            <span class="icon">
+                                <ion-icon name="call-outline"></ion-icon>
+                            </span>
+                            <span class="text">Записаться на ремонт</span>
+                        </a>
+                    </li>
+                    {{/if}}
+                    <li class="list">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="reorder-four-outline"></ion-icon>
+                            </span>
+                            <span class="text">Контакты</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="cash-outline"></ion-icon>
+                            </span>
+                            <span class="text">Прайс лист</span>
+                        </a>
+                    </li>
+                    <div class="indicator"></div>
+                    <script>
+                        
 
-            <ul class="nav_link_active" href="/">Главная</ul>
-            {{else}}
-            <ul class="nav_link" href="/">Главная</ul>
-            {{/if}}
-            {{#if coupon}}
-            <ul class="nav_link_active" href="/create_application">Записаться на ремонт</ul>
-            {{else}}
-            <ul class="nav_link" href="/create_application">Записаться на ремонт</ul>
-            {{/if}}
-            {{#if history}}
-            <ul class="nav_link_active" href="/contacts">Контакты</ul>
-            {{else}}
-            <ul class="nav_link" href="/contacts">Контакты</ul>
-            {{/if}}
-            {{#if ratingcheck}}
-            <ul class="nav_link_active" href="/price">Прайс-лист</ul>
-            {{else}}
-            <ul class="nav_link" href="/price">Прайс-лист</ul>
-            {{/if}}
-
-        </li>
-        <div class="nav_right">
-            {{#if ratingcheck}}
-            <ul class="nav_link_active" href="/about">О нас</ul>
-            {{else}}
-            <ul class="nav_link" href="/about">О нас</ul>
-            {{/if}}
-            <p style="text-align: center; margin-left:50px; ">ПН - ВС 10:00 - 21:00 <br> Без выходных</p>
-        </div>
-       
-
+                        
+                    </script>
+                </ul>
+                
+                <p style="text-align: center; margin-right: 10px;">ПН - ВС 10:00 - 21:00 <br> Без выходных</p>
+            
+            </nav>
+            
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </header>

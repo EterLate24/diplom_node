@@ -8,13 +8,15 @@ router.get('/', async (req, res) => {
 
     res.render('index', {
         title: 'EterService - главная',
-        massiv
+        massiv,
+        home:true
     })
 })
 
 router.get('/create_application', (req, res) => {
     res.render('create_application', {
         title: 'Создание',
+        create_application: true
     })
 })
 
