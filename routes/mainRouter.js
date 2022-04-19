@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     const massiv = await model.find({}).lean()
 
     res.render('index', {
-        title: 'Здрасьте',
+        title: 'EterService - главная',
         massiv
     })
 })
