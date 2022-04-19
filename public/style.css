@@ -36,21 +36,19 @@ h1, h2, h3, h4, h5, h6{
 
 .nav{
     position: relative;
-    width: 1300px;
-    height: 70px;
+    width: 1500px;
+    height: 80px;
     background: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-radius: 10px;
 }
 
 .nav ul{
     display: flex;
-    width: 100%;
-    margin-left: 50px;
-    margin-right: 50px;
-    justify-content: space-between;
+    margin-right: 100px;
+    margin-left: 100px;
     
 }
 .nav ul li{
@@ -73,28 +71,28 @@ h1, h2, h3, h4, h5, h6{
 .nav ul li a .icon{
     position: relative;
     display: block;
-    line-height: 70px;
+    line-height: 80px;
     font-size: 1.5em;
     text-align: center;
     transition: .5s;
     color: var(--clr);
 }
 .nav ul li.active a .icon{
-    transform: translateY(-35px);
+    transform: translateY(-45px);
 }
 .nav ul li a .text{
     position: absolute;
     color: var(--clr);
     font-weight: 600;
     font-size: 1em;
-    letter-spacing: .05em;
+    letter-spacing: .03em;
     transition: .5s;
     opacity: 0;
     transform: translateY(20px);
 }
 .nav ul li.active a .text{
     opacity: 1;
-    transform: translateY(20px);
+    transform: translateY(10px);
 }
 .indicator{
     position: absolute;
@@ -132,10 +130,10 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .nav ul li:nth-child(1).active ~ .indicator{
-    transform: translateX(calc(70px * 0 + 25%));
+    transform: translateX(calc(70px * 0));
 }
 .nav ul li:nth-child(2).active ~ .indicator{
-    transform: translateX(calc(270% * 2));
+    transform: translateX(calc(70px * 1));
 }
 .nav ul li:nth-child(3).active ~ .indicator{
     transform: translateX(calc(70px * 2));
