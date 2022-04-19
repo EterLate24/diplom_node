@@ -12,13 +12,13 @@ router.get('/', async (req, res) => {
     })
 })
 
-router.get('/create', (req, res) => {
-    res.render('create', {
+router.get('/create_application', (req, res) => {
+    res.render('create_application', {
         title: 'Создание',
     })
 })
 
-router.post('/create', async (req, res) => {
+router.post('/send_application', async (req, res) => {
     const poc = new model({
         name: req.body.name
     })
