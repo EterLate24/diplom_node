@@ -1,3 +1,6 @@
+body{
+    background: rgba(255,165,0, 0.8)
+}
 *{
     box-sizing: border-box;
     margin: 0;
@@ -11,14 +14,39 @@ h1, h2, h3, h4, h5, h6{
 :root{
     --clr: #222327;
 }
-/*-----------------------------------------------------------Container*/
+/* -----------------------------------------------------------Headers */
+.main_page_header{
+    display: flex;
+    justify-content: center;
+    font-size: 3em;
+    text-align: center;
+}
+
+/*-----------------------------------------------------------Containers*/
 
 .container{
     /* text-align: center; */
     width: 100%;
-    max-width: 1300px;
+    max-width: 1500px;
     margin: 0 auto;
 }
+/* -----------------------------------------Main */
+    .main_container{
+        height: 500px;
+        display: flex;
+    }
+    .main_right{
+        max-width: 750px;
+    }
+    .main_left{
+        max-width: 750px;
+    }
+    .main_left ul{
+        font-size: 2em;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
 
 /*-----------------------------------------------------------Header*/
 
@@ -46,6 +74,10 @@ h1, h2, h3, h4, h5, h6{
     align-items: center;
     border-radius: 10px;
 }
+.logo{
+    display: flex;
+    align-items: center;
+}
 
 .nav ul{
     display: flex;
@@ -63,6 +95,7 @@ h1, h2, h3, h4, h5, h6{
     width: 70px;
     height: 70px;
     z-index: 1;
+    margin-right: 50px;
 }
 .nav ul li a{
     position: relative;
@@ -77,32 +110,24 @@ h1, h2, h3, h4, h5, h6{
 .nav ul li a .icon{
     position: relative;
     display: block;
-    line-height: 70px;
-    line-height: 80px;
+    line-height: 50px;
     font-size: 1.5em;
-    text-align: center;
-    transition: .5s;
     color: var(--clr);
 }
 .nav ul li.active a .icon{
-    transform: translateY(-35px);
-    transform: translateY(-45px);
+    transform: translateY(-32px);
 }
 .nav ul li a .text{
     position: absolute;
     color: var(--clr);
     font-weight: 600;
     font-size: 1em;
-    letter-spacing: .05em;
-    letter-spacing: .03em;
-    transition: .5s;
-    opacity: 0;
-    transform: translateY(20px);
+    letter-spacing: 0.03em;
+    transform: translateY(30px);
 }
 .nav ul li.active a .text{
     opacity: 1;
     transform: translateY(20px);
-    transform: translateY(10px);
 }
 .indicator{
     position: absolute;
@@ -140,16 +165,14 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .nav ul li:nth-child(1).active ~ .indicator{
-    transform: translateX(calc(70px * 0 + 25%));
-    transform: translateX(calc(70px * 0));
+    transform: translateX(calc(120px * 0));
 }
 .nav ul li:nth-child(2).active ~ .indicator{
-    transform: translateX(calc(270% * 2));
-    transform: translateX(calc(70px * 1));
+    transform: translateX(calc(120px * 1));
 }
 .nav ul li:nth-child(3).active ~ .indicator{
-    transform: translateX(calc(70px * 2));
+    transform: translateX(calc(120px * 2));
 }
 .nav ul li:nth-child(4).active ~ .indicator{
-    transform: translateX(calc(70px * 3));
+    transform: translateX(calc(120px * 3));
 }
