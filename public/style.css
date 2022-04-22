@@ -1,5 +1,5 @@
 body{
-    background: rgba(255,165,0, 0.8)
+    background: #ffb121
 }
 *{
     box-sizing: border-box;
@@ -34,12 +34,17 @@ h1, h2, h3, h4, h5, h6{
     .main_container{
         height: 500px;
         display: flex;
+        background: #ffb938;
+        border-radius: 10px;
     }
     .main_right{
         max-width: 750px;
     }
     .main_left{
         max-width: 750px;
+        display: flex;
+        flex-direction: column;
+        
     }
     .main_left ul{
         font-size: 2em;

@@ -1,7 +1,7 @@
 <div class="main_container">
     <div class="main_left">
         <h1 class="main_page_header">Ремонт смартфонов по всей России</h1>
-        <ul>
+        <ul style="list-style-position: inside;">
             <li>Быстро<br></li>
             
             <li>Качественно</li>
@@ -10,7 +10,7 @@
         </ul>
     </div>
     <div class="main_right">
-        <img src="/service.jpg" width="750px" alt="">
+        <img src="/service.jpg" width="750px" height="500px" alt="">
     </div>
 </div>
 
@@ -29,7 +29,7 @@
 
 
 
-{{!-- <h2>Create page</h2>
+<h2>Create page</h2>
 
 {{#if massiv.length}}
 <ul>
@@ -37,16 +37,13 @@
     <li>
         <form action="/complete" method="POST">
             <label>
-                {{#if completed}}
-                <input type="checkbox" checked name="completed">
-                <span>{{name}}</span>
-                {{else}}
-                <input type="checkbox" name="completed">
-                <span>{{name}}</span>
-                {{/if}}
-                <input type="hidden" value="{{_id}}" name="id">
-
-
+                <span>{{phone_number}}</span>
+                <span>{{device_type}}</span>
+                <span>{{brand}}</span>
+                <span>{{model}}</span>
+                <span>{{defect}}</span>
+                <span>{{comment}}</span>
+             
                 <button type="submit">Save</button>
             </label>
         </form>
@@ -54,5 +51,5 @@
     {{/each}}
 </ul>
 {{else}}
-<h3>pustoi massiv</h3>
-{{/if}} --}}
+<h3>НЕТ ЗАЯВОК</h3>
+{{/if}}
