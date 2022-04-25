@@ -40,6 +40,16 @@
                     </a>
                 </li>
                 {{/if}}
+                {{#if contacts}}
+                <li class="list active">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="reorder-four-outline"></ion-icon>
+                        </span>
+                        <span class="text">Контакты</span>
+                    </a>
+                </li>
+                {{else}}
                 <li class="list">
                     <a href="#">
                         <span class="icon">
@@ -48,6 +58,17 @@
                         <span class="text">Контакты</span>
                     </a>
                 </li>
+                {{/if}}
+                {{#if price_list}}
+                <li class="list active">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="cash-outline"></ion-icon>
+                        </span>
+                        <span class="text">Прайс лист</span>
+                    </a>
+                </li>
+                {{else}}
                 <li class="list">
                     <a href="#">
                         <span class="icon">
@@ -56,12 +77,27 @@
                         <span class="text">Прайс лист</span>
                     </a>
                 </li>
+                {{/if}}
+                {{#if cab}}
+                <li class="list active">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </span>
+                        <span class="text">Личный кабинет</span>
+                    </a>
+                </li>
+                {{else}}
+                <li class="list">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </span>
+                        <span class="text">Личный кабинет</span>
+                    </a>
+                </li>
+                {{/if}}
                 <div class="indicator"></div>
-                <script>
-
-
-
-                </script>
             </ul>
             <div class="logo">
                 <p style="text-align: center;">ПН - ВС 10:00 - 21:00 <br> Без выходных</p>

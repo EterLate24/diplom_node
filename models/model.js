@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const schema = new Schema({
+const applications = new Schema({
     phone_number: {
         type: String,
         required: true
@@ -25,4 +25,4 @@ const schema = new Schema({
     },
 })
 
-module.exports = model('model', schema)
+module.exports = model('applications', applications)
