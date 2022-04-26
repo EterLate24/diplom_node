@@ -5,6 +5,7 @@ const router = Router()
 const controller = require('../authController')
 const { check } = require('express-validator')
 const authMiddleware = require('../middleware/authMiddleware')
+const roleMiddleware = require('../middleware/roleMiddleware')
 
 
 // Главная
@@ -28,7 +29,7 @@ router.post('/login', controller.login)
 
 
 // Кабинет админа
-router.get('/adminCab', authMiddleware, controller.adminCab)
+router.get('/adminCab', roleMiddleware(['ADMIN']), controller.adminCab)
 
 // Просмотр заявок
 router.get('/view_application')
