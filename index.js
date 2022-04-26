@@ -4,6 +4,8 @@ const exphbs = require('express-handlebars')
 require('dotenv').config()
 const routes = require('./routes/mainRouter')
 const path = require('path')
+const cookieParser = require('cookie-parser')
+const { use } = require('express/lib/router')
 
 
 const PORT = process.env.PORT || 3000
@@ -14,6 +16,7 @@ const hbs = exphbs.create({
     extname:'hbs'
 })
 
+app.use(cookieParser())
 app.use(express.json())
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')

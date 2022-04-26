@@ -46,7 +46,9 @@ class authController {
                 return res.status(400).json({ message: `Введён неверный пароль` })
             }
             const token = generateAccessToken(user._id, user.roles)
-            return res.json({token})
+            res.cookie('UserHash', token)
+            // return res.json({token})
+            res.redirect('/cab')
 
         } catch (e) {
             console.log(e)

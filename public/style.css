@@ -181,3 +181,6 @@ h1, h2, h3, h4, h5, h6{
 .nav ul li:nth-child(4).active ~ .indicator{
     transform: translateX(calc(120px * 3));
 }
+.nav ul li:nth-child(5).active ~ .indicator{
+    transform: translateX(calc(120px * 4));
+}

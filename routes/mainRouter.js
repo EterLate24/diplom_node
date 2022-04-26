@@ -25,11 +25,24 @@ router.post('/registration',[
     ], 
     controller.registration)
 
+router.get('/enter', (req,res)=>{
+    res.render('enter',{
+        title: 'EterService - войти'
+    })
+})
 router.post('/login', controller.login)
 
 
 // Кабинет админа
 router.get('/adminCab', roleMiddleware(['ADMIN']), controller.adminCab)
+
+// Личный кабинет
+router.get('/cab', authMiddleware, (req,res)=>{
+    res.render('cab',{
+        cab:true
+    })
+})
+
 
 // Просмотр заявок
 router.get('/view_application')
