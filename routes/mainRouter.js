@@ -4,6 +4,7 @@ const applications = require('../models/model')
 const router = Router()
 const controller = require('../authController')
 const { check } = require('express-validator')
+const authMiddleware = require('../middleware/authMiddleware')
 
 
 // Главная
@@ -27,7 +28,7 @@ router.post('/login', controller.login)
 
 
 // Кабинет админа
-router.get('/adminCab', controller.adminCab)
+router.get('/adminCab', authMiddleware, controller.adminCab)
 
 // Просмотр заявок
 router.get('/view_application')
