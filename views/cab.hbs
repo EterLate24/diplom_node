@@ -1,3 +1,24 @@
 <h1>Личный кабинет</h1>
+{{#if massiv.length}}
+<ul>
+    {{#each massiv}}
+    <li>
+        <form action="/complete" method="POST">
+            <label>
+                <span>{{phone_number}}</span>
+                <span>{{device_type}}</span>
+                <span>{{brand}}</span>
+                <span>{{model}}</span>
+                <span>{{defect}}</span>
+                <span>{{comment}}</span>
+             
+                <button type="submit">Save</button>
+            </label>
+        </form>
+    </li>
+    {{/each}}
+</ul>
+{{else}}
+<h3>НЕТ ЗАЯВОК</h3>
+{{/if}}
 <a href="/adminCab">Только для админа</a>
-<a href="/adminCab">Для всех</a>

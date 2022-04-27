@@ -10,35 +10,46 @@ const roleMiddleware = require('../middleware/roleMiddleware')
 
 // Главная
 router.get('/', async (req, res) => {
-    const massiv = await applications.find({}).lean()
+    
     res.render('index', {
         title: 'EterService - главная',
-        massiv,
         home: true
     })
 })
 
-// Авторизация
+//----------------------------------------Авторизация
+// Регистрация
 router.post('/registration',[
     check('username', 'Имя пользователя не может быть пустым').notEmpty(),
-    check('password', 'Пароль должен быть больше 4 и меньше 15 символов').isLength({min:4, max:15})
+    check('password', 'Пароль должен быть больше 4 и меньше 15 символов').isLength({min:4, max:15}),
+    check('phone_number', 'Неверный формат номера телефона').isMobilePhone('ru-RU')
     ], 
     controller.registration)
 
+//Страничка регистрации
+router.get('/registration_page', (req,res)=>{
+    res.render('registration_page',{
+        title: 'EterService - зарегистрироваться'
+    })
+})
+//Логин
+router.post('/login', controller.login)
+
+//Страничка входа
 router.get('/enter', (req,res)=>{
     res.render('enter',{
         title: 'EterService - войти'
     })
 })
-router.post('/login', controller.login)
-
 
 // Кабинет админа
-router.get('/adminCab', roleMiddleware(['ADMIN']), controller.adminCab)
+router.get('/adminCab', roleMiddleware(['ADMIN']))
 
-// Личный кабинет
-router.get('/cab', authMiddleware, (req,res)=>{
+ // Личный кабинет
+router.get('/cab', authMiddleware,async (req,res)=>{
+    const massiv = await applications.find({}).lean()
     res.render('cab',{
+        massiv,
         cab:true
     })
 })

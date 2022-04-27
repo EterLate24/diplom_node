@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 const {secret} = require('../config')
 
 
+
 module.exports = (req, res, next) => {
     const { cookies } = req
     try {
