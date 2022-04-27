@@ -3,7 +3,6 @@
 <ul>
     {{#each massiv}}
     <li>
-        <form action="/complete" method="POST">
             <label>
                 <span>{{phone_number}}</span>
                 <span>{{device_type}}</span>
@@ -12,9 +11,7 @@
                 <span>{{defect}}</span>
                 <span>{{comment}}</span>
              
-                <button type="submit">Save</button>
             </label>
-        </form>
     </li>
     {{/each}}
 </ul>

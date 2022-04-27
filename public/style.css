@@ -184,3 +184,40 @@ h1, h2, h3, h4, h5, h6{
 .nav ul li:nth-child(5).active ~ .indicator{
     transform: translateX(calc(120px * 4));
 }
+
+
+#myTable {
+    border-collapse: collapse; 
+    width: 100%;
+    font-size: 14px;
+    
+  }
+  
+  #myTable th {
+    text-align: center; 
+    justify-content: center;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, .3);
+    border-right: 1px solid rgba(0, 0, 0, .3);
+    text-transform: uppercase;
+    background-color: #DCDCDC;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 64px;
+    
+  }
+  #myTable td{
+    text-align: center; 
+    /* padding: 12px; */
+    border-right:1px solid rgba(0, 0, 0, .3);
+  }
+  
+  #myTable tr {
+    /* background-color: #f0f0f0; */
+    border-bottom: 1px solid rgba(0, 0, 0, .3);
+  }
+
+  #myTable tr:hover{
+    background-color: #e8e6e6;
+  }

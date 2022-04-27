@@ -1,0 +1,32 @@
+<h1>Все заявки</h1>
+{{#if massiv.length}}
+    <table id="myTable">
+        <tr>
+            <th>Номер телефона</th>
+            <th>Тип устройства</th>
+            <th>Брэнд</th>
+            <th>Модель</th>
+            <th>Вид поломки</th>
+            <th>Комментарий клиента</th>
+        </tr>
+    
+{{#each massiv}}
+    <tr>
+        <th>{{phone_number}}</th>
+        <th>
+            {{#if device_type}}
+                Планшет
+            {{else}}
+                Телефон
+            {{/if}}
+        </th>
+        <th>{{brand}}</th>
+        <th>{{model}}</th>
+        <th>{{defect}}</th>
+        <th>{{comment}}</th>
+    </tr>
+{{/each}}
+</table>
+{{else}}
+<h3>НЕТ ЗАЯВОК</h3>
+{{/if}}
