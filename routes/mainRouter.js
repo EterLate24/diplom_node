@@ -107,7 +107,7 @@ router.post('/send_application', async (req, res) => {
 router.get('/contacts', (req, res) => {
     res.render('contacts', {
         title: 'EterService - Контакты',
-        create_application: true
+        contacts: true
     })
 })
 
