@@ -2,31 +2,71 @@
 {{#if massiv.length}}
     <table id="myTable">
         <tr>
+            <th>ID заявки</th>
             <th>Номер телефона</th>
             <th>Тип устройства</th>
             <th>Брэнд</th>
             <th>Модель</th>
             <th>Вид поломки</th>
+            <th>Дата создания</th>
+            <th>Дата визита</th>
             <th>Комментарий клиента</th>
+            <th>Комментарий администратора</th>
+            <th>Результат визита</th>
+            <th>Изменить</th>
+            <th>Удалить</th>
         </tr>
-    
-{{#each massiv}}
-    <tr>
-        <th>{{phone_number}}</th>
-        <th>
-            {{#if device_type}}
-                Планшет
-            {{else}}
-                Телефон
-            {{/if}}
-        </th>
-        <th>{{brand}}</th>
-        <th>{{model}}</th>
-        <th>{{defect}}</th>
-        <th>{{comment}}</th>
-    </tr>
-{{/each}}
-</table>
+
+        {{#each massiv}}
+        <form id={{_id}}>
+            <tr>
+                <td>{{_id}}</td>
+                <td>{{phone_number}}</td>
+                <td>
+                    {{#if device_type}}
+                    Планшет
+                    {{else}}
+                    Телефон
+                    {{/if}}
+                </td>
+                <td>{{brand}}</td>
+                <td>{{model}}</td>
+                <td>{{defect}}</td>
+                <td>{{date_create}}</td>
+                <td>{{date_visit}}</td>
+                <td>{{comment}}</td>
+                <td>{{admin_comment}}</td>
+                <td>
+                    {{#if result}}
+                    Выполнена
+                    {{else}}
+                    В работе
+                    {{/if}}
+                </td>
+                <td>
+                    <input type="image" src="edit.svg" form={{_id}} formaction="/edit_applications" formmethod="get" width="25px"
+                        height="25px">
+                </td>
+                <td>
+                    <input type="image" src="delete.svg" form={{_id}} formaction="/delete_applications" formmethod="post" width="25px"
+                        height="25px">
+                </td>
+
+                <input type="hidden" name="_id" value={{_id}}></input>
+                <input type="hidden" name="phone_number" value={{phone_number}}></input>
+                <input type="hidden" name="device_type" value={{device_type}}></input>
+                <input type="hidden" name="brand" value="{{brand}}"></input>
+                <input type="hidden" name="model" value={{model}}></input>
+                <input type="hidden" name="defect" value={{defect}}></input>
+                <input type="hidden" name="comment" value={{comment}}></input>
+                <input type="hidden" name="admin_comment" value={{admin_comment}}></input>
+                <input type="hidden" name="date_create" value={{date_create}}></input>
+                <input type="hidden" name="date_visit" value={{date_visit}}></input>
+                <input type="hidden" name="result" value={{result}}></input>
+            </tr>
+        </form>
+        {{/each}}
+    </table>
 {{else}}
 <h3>НЕТ ЗАЯВОК</h3>
 {{/if}}

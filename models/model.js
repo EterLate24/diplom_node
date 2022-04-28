@@ -10,6 +10,13 @@ const applications = new Schema({
         default: false,
         required: true
     },
+    date_create: {
+        type: Date,
+        required: true
+    },
+    date_visit: {
+        type: Date
+    },
     brand: {
         type: String,
         required: true
@@ -23,6 +30,13 @@ const applications = new Schema({
     comment: {
         type: String
     },
+    admin_comment: {
+        type: String
+    },
+    result: {
+        type: Boolean,
+        default: false
+    }
 })
 
 module.exports = model('applications', applications)
