@@ -169,6 +169,12 @@ router.post('/save_applications', async (req, res) => {
     res.redirect('/adminCab')
 })
 
+// Удаление заявки
+router.get('/delete_application',async (req, res) => {
+    await applications.findByIdAndDelete({_id: req.query._id})
+    res.redirect('/adminCab')
+})
+
 // router.post('/complete', async (req, res) => {
 //     const poc = await model.findById(req.body.id)
 
