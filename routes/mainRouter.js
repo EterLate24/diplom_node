@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const { route } = require('express/lib/application')
 const applications = require('../models/model')
+const User = require('../models/User')
 const router = Router()
 const controller = require('../authController')
 const { check } = require('express-validator')
@@ -71,6 +72,37 @@ router.get('/adminCab', roleMiddleware(['ADMIN']), async (req, res) => {
     })
 })
 
+// Кабинет работника
+router.get('/workerCab', roleMiddleware(['WORKER']), async (req, res) => {
+    const { cookies } = req
+    const name = JSON.parse(cookies.UserData).name
+    const lastname = JSON.parse(cookies.UserData).lastname
+    const massiv = await applications.find({ worker: name+' '+lastname }).lean()
+    massiv.forEach(element =>{
+        if(element.date_create != null){
+            element.date_create = formatDateWrong(element.date_create)
+        }
+        if(element.date_visit != null){
+            element.date_visit = formatDateWrong(element.date_visit)
+        }
+    })
+    res.render('workerCab', {
+        massiv,
+        title: 'EterService - управление',
+        cab: true
+    })
+})
+
+// Отметить выполнение для работника
+router.get('/check_application', roleMiddleware(['WORKER']), async (req, res) => {
+    const poc = await applications.findByIdAndUpdate(req.query._id,{
+        status: 'Выполнена',
+    })
+    res.redirect('workerCab')
+})
+
+
+
 // Личный кабинет
 router.get('/cab', authMiddleware, async (req, res) => {
     const { cookies } = req
@@ -88,12 +120,21 @@ router.get('/cab', authMiddleware, async (req, res) => {
 // Создание заявки
 router.get('/create_application', (req, res) => {
     const { cookies } = req
-    const phone = JSON.parse(cookies.UserData).phone_number
-    res.render('create_application', {
-        phone,
-        title: 'EterService - запись',
-        create_application: true
-    })
+    if ('UserData' in cookies){
+        const phone = JSON.parse(cookies.UserData).phone_number
+        res.render('create_application', {
+            phone,
+            title: 'EterService - запись',
+            create_application: true
+        })
+    }else{
+        res.render('create_application', {
+            title: 'EterService - запись',
+            create_application: true
+        })
+    }
+    
+    
 })
 
 // Отправка заявки
@@ -133,8 +174,9 @@ router.get('/edit_applications', (req, res) => {
         defect = req.query.defect,
         comment = req.query.comment,
         admin_comment = req.query.admin_comment,
-        result = req.query.result,
-        date_visit = req.query.date_visit
+        date_visit = formatDateBack(req.query.date_visit),
+        worker = req.query.worker,
+        Status = req.query.status 
     res.render('edit_applications', {
         _id,
         phone_number,
@@ -145,7 +187,8 @@ router.get('/edit_applications', (req, res) => {
         comment,
         admin_comment,
         date_visit,
-        result,
+        Status,
+        worker,
         title: 'EterService - редактировать',
         cab: true
     })
@@ -161,7 +204,8 @@ router.post('/save_applications', async (req, res) => {
         defect: req.body.defect,
         comment: req.body.comment,
         admin_comment: req.body.admin_comment,
-        result: req.body.result,
+        status: req.body.Status,
+        worker: req.body.worker,
         date_visit: req.body.date_visit
 
     })

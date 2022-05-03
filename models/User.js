@@ -14,11 +14,17 @@ const User = new Schema({
         type: String,
         required:true
     },
+    name:{
+        type: String
+    },
+    lastname:{
+        type: String
+    },
     roles:[{
         type: String,
         ref: 'Role'
 
-    }]
+    }],
 })
 
 module.exports = model ('User', User)

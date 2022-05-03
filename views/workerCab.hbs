@@ -1,4 +1,4 @@
-<h1>Все заявки</h1>
+<h1>Ваши заявки</h1>
 {{#if massiv.length}}
     <table id="myTable">
         <tr>
@@ -14,8 +14,7 @@
             <th>Комментарий администратора</th>
             <th>Работник</th>
             <th>Статус заявки</th>
-            <th>Изменить</th>
-            <th>Удалить</th>
+            <th>Отметить выполнение</th>
         </tr>
 
         {{#each massiv}}
@@ -40,11 +39,7 @@
                 <td>{{worker}}</td>
                 <td>{{status}}</td>
                 <td>
-                    <input type="image" src="edit.svg" form={{_id}} formaction="/edit_applications" formmethod="get" width="25px"
-                        height="25px">
-                </td>
-                <td>
-                    <input type="image" src="delete.svg" form={{_id}} formaction="/delete_application" formmethod="get" width="25px"
+                    <input type="image" src="check.svg" form={{_id}} formaction="/check_application" formmethod="get" width="25px"
                         height="25px">
                 </td>
 

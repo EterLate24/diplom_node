@@ -19,16 +19,24 @@
         <input  type="text" name="defect" value={{defect}}>
 
         <label for="date_visit">Дата визита</label>
-        <input  type="datetime-local" name="date_visit" value={{date_visit}}>
+        <input  type="datetime-local" name="date_visit" value="{{date_visit}}">
 
         <label for="comment">Комментарий клиента</label>
-        <input  type="text" name="comment" value={{comment}}>
+        <input  type="text" name="comment" value="{{comment}}">
 
         <label for="admin_comment">Комментарий администратора</label>
-        <input  type="text" name="admin_comment" value={{admin_comment}}>
+        <input  type="text" name="admin_comment" value="{{admin_comment}}">
 
-        <label for="result">Результат</label>
-        <input  type="checkbox" name="result" value={{result}}>
+        <label for="worker">Работник</label>
+        <select name="worker" id="worker">
+            <option value="Рамиль Колдашев">Рамиль Колдашев</option>
+            <option value="Владислав Нагибин">Владислав Нагибин</option>
+            <option value="Степан Черемнов">Степан Черемнов</option>
+            <option value="Роберт Климонтов">Роберт Климонтов</option>
+        </select>
+
+        <label for="Status">Статус заявки</label>
+        <input  type="text" name="Status" value="{{Status}}">
 
         <button type="submit">Сохранить</button>
     </form>

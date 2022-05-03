@@ -33,9 +33,13 @@ const applications = new Schema({
     admin_comment: {
         type: String
     },
-    result: {
-        type: Boolean,
-        default: false
+    worker: {
+        type: String,
+        ref: 'User'
+    },
+    status: {
+        type: String,
+        default: 'В обработке'
     }
 })
 

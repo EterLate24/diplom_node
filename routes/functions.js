@@ -33,8 +33,8 @@
     
         return newDate
     }
-    function formatDateBack(Sdate) { //30.11.1982
-        let newDate = Sdate.slice(6, 10) + '-' + Sdate.slice(3, 5) + '-' + Sdate.slice(0, 2)
+    function formatDateBack(Sdate) { //03.05.2022 16:27
+        let newDate = Sdate.slice(6, 10) + '-' + Sdate.slice(3, 5) + '-' + Sdate.slice(0, 2) + 'T' + Sdate.slice(11,16)
     
         return newDate
     
