@@ -1,6 +1,9 @@
 const {Schema, model} = require('mongoose')
 
 const pricelist = new Schema({
+    brand:{
+        type: String
+    },
     model:{
         type: String
     },

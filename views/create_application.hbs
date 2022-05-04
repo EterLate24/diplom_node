@@ -9,11 +9,61 @@
             <option value="0" selected>Смартфон</option>
             <option value="1">Планшет</option>
         </select>
+        <div onmouseenter="show()" onmouseleave="hide()" id="select_box" class="select_box">
+            <input name="brand" type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <div class="hidden_box" id="hidden_box">
+                <a onclick="zalupen('Apple')">Apple</a>
+                <a onclick="zalupen('Samsung')">Samsung</a>
+            </div>
+        </div>
 
-        <label>Бренд</label>
-        <select name="brand" id="brand">
-            <option value="apple">Apple</option>
-        </select>
+        <script>
+            /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+            function show() {
+                document.getElementById('hidden_box').classList.toggle("box");
+            }
+            function hide() {
+                document.getElementById('hidden_box').classList.remove("box");
+            }
+
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+            function zalupen(name) {
+                var input = document.getElementById("myInput");
+                input.value = name
+            }
+            function price() {
+                var requestOptions = {
+                    method: 'POST',
+                    redirect: 'follow'
+                };
+
+                fetch("http://localhost:2000/show_price", requestOptions)
+                    .then(response => response.text())
+                    .then(result => console.log(result))
+                    .catch(error => console.log('error', error));
+            }
+
+            function filterFunction() {
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                div = document.getElementById("select_box");
+                a = div.getElementsByTagName("a");
+                for (i = 0; i < a.length; i++) {
+                    txtValue = a[i].textContent || a[i].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        a[i].style.display = "";
+                    } else {
+                        a[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
+
+        <button type="button" onclick="price()">price</button>
 
         <label>Модель</label>
         <input type="text" name="model">

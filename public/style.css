@@ -220,6 +220,16 @@ h1, h2, h3, h4, h5, h6{
   #myTable tr:hover{
     background-color: #e8e6e6;
   }
+
+.hidden_box{
+    display: none;
+}
+.box{
+    display: block;
+}
+
+  
+
   
 
   

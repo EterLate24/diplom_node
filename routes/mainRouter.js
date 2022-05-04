@@ -50,11 +50,6 @@ router.get('/enter', (req, res) => {
 
 //Выход из аккаунта
 router.get('/out', (req, res) => {
-    // data.forEach(elem=>{
-    //     const price = new pricelist(elem)
-
-    //     price.save()
-    // })
     
     res.clearCookie('UserHash')
     res.clearCookie('UserData')
@@ -78,6 +73,11 @@ router.get('/adminCab', roleMiddleware(['ADMIN']), async (req, res) => {
         cab: true
     })
 })
+//Залупка
+router.post('/show_price', (req, res) => {
+    res.status(200).json({message:"succes"})
+})
+
 
 // Кабинет работника
 router.get('/workerCab', roleMiddleware(['WORKER']), async (req, res) => {
