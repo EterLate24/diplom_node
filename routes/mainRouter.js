@@ -9,7 +9,8 @@ const authMiddleware = require('../middleware/authMiddleware')
 const roleMiddleware = require('../middleware/roleMiddleware')
 const jwt = require('jsonwebtoken')
 const {formatDateWrong, formatDateBack} = require('./functions')
-
+const {data} = require('../data')
+const pricelist = require('../models/pricelist')
 
 
 // Главная
@@ -49,6 +50,12 @@ router.get('/enter', (req, res) => {
 
 //Выход из аккаунта
 router.get('/out', (req, res) => {
+    // data.forEach(elem=>{
+    //     const price = new pricelist(elem)
+
+    //     price.save()
+    // })
+    
     res.clearCookie('UserHash')
     res.clearCookie('UserData')
     res.redirect('/enter')
@@ -75,9 +82,8 @@ router.get('/adminCab', roleMiddleware(['ADMIN']), async (req, res) => {
 // Кабинет работника
 router.get('/workerCab', roleMiddleware(['WORKER']), async (req, res) => {
     const { cookies } = req
-    const name = JSON.parse(cookies.UserData).name
-    const lastname = JSON.parse(cookies.UserData).lastname
-    const massiv = await applications.find({ worker: name+' '+lastname }).lean()
+    const user = JSON.parse(cookies.UserData)
+    const massiv = await applications.find({ worker: user.name+' '+user.lastname}).lean()
     massiv.forEach(element =>{
         if(element.date_create != null){
             element.date_create = formatDateWrong(element.date_create)
@@ -218,6 +224,8 @@ router.get('/delete_application',async (req, res) => {
     await applications.findByIdAndDelete({_id: req.query._id})
     res.redirect('/adminCab')
 })
+
+
 
 // router.post('/complete', async (req, res) => {
 //     const poc = await model.findById(req.body.id)
