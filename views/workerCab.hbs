@@ -14,6 +14,7 @@
             <th>Комментарий администратора</th>
             <th>Работник</th>
             <th>Статус заявки</th>
+            <th>Дата выполнения</th>
             <th>Отметить выполнение</th>
         </tr>
 
@@ -38,6 +39,7 @@
                 <td>{{admin_comment}}</td>
                 <td>{{worker}}</td>
                 <td>{{status}}</td>
+                <td>{{date_complete}}</td>
                 <td>
                     <input type="image" src="check.svg" form={{_id}} formaction="/check_application" formmethod="get" width="25px"
                         height="25px">

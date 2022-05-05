@@ -12,8 +12,8 @@
         <div onmouseenter="show()" onmouseleave="hide()" id="select_box" class="select_box">
             <input name="brand" type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
             <div class="hidden_box" id="hidden_box">
-                <a onclick="zalupen('Apple')">Apple</a>
-                <a onclick="zalupen('Samsung')">Samsung</a>
+                <a onclick="get('Apple')">Apple</a>
+                <a onclick="get('Samsung')">Samsung</a>
             </div>
         </div>
 
@@ -30,10 +30,11 @@ toggle between hiding and showing the dropdown content */
             function myFunction() {
                 document.getElementById("myDropdown").classList.toggle("show");
             }
-            function zalupen(name) {
+            function get(name) {
                 var input = document.getElementById("myInput");
                 input.value = name
             }
+
             function price() {
                 var requestOptions = {
                     method: 'POST',

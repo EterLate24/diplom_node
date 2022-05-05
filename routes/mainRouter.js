@@ -73,11 +73,12 @@ router.get('/adminCab', roleMiddleware(['ADMIN']), async (req, res) => {
         cab: true
     })
 })
+
 //Залупка
 router.post('/show_price', (req, res) => {
     res.status(200).json({message:"succes"})
+    input = req.input
 })
-
 
 // Кабинет работника
 router.get('/workerCab', roleMiddleware(['WORKER']), async (req, res) => {
@@ -91,6 +92,9 @@ router.get('/workerCab', roleMiddleware(['WORKER']), async (req, res) => {
         if(element.date_visit != null){
             element.date_visit = formatDateWrong(element.date_visit)
         }
+        if(element.date_complete != null){
+            element.date_complete = formatDateWrong(element.date_complete)
+        }
     })
     res.render('workerCab', {
         massiv,
@@ -101,8 +105,10 @@ router.get('/workerCab', roleMiddleware(['WORKER']), async (req, res) => {
 
 // Отметить выполнение для работника
 router.get('/check_application', roleMiddleware(['WORKER']), async (req, res) => {
+    now = new Date()
     const poc = await applications.findByIdAndUpdate(req.query._id,{
         status: 'Выполнена',
+        date_complete: now
     })
     res.redirect('workerCab')
 })

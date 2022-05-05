@@ -17,6 +17,9 @@ const applications = new Schema({
     date_visit: {
         type: Date
     },
+    date_complete: {
+        type: Date
+    },
     brand: {
         type: String,
         required: true
@@ -36,6 +39,12 @@ const applications = new Schema({
     worker: {
         type: String,
         ref: 'User'
+    },
+    approximate_cost: {
+        type: Number
+    },
+    end_cost: {
+        type: Number
     },
     status: {
         type: String,
