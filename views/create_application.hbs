@@ -15,11 +15,37 @@
                 <a onclick="get('Apple')">Apple</a>
                 <a onclick="get('Samsung')">Samsung</a>
             </div>
-        </div>
 
+        </div>
+        <button type="button" onclick="price()">price</button>
+        <div id="itog"></div>
         <script>
-            /* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+            function price() {
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                var input = document.getElementById("myInput");
+                let chel = input.value
+                var raw = JSON.stringify({
+                    chel
+                });
+
+                var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow'
+                };
+
+                fetch("http://localhost:2000/show_price", requestOptions)
+                    .then(response => response.text())
+                    .then(result => console.log(result))
+                    .catch(error => console.log('error', error));
+
+                itog = document.getElementById("itog");
+                itog.innerHTML = "<h1>Привет!</h1>";
+                
+            }
+
             function show() {
                 document.getElementById('hidden_box').classList.toggle("box");
             }
@@ -35,17 +61,7 @@ toggle between hiding and showing the dropdown content */
                 input.value = name
             }
 
-            function price() {
-                var requestOptions = {
-                    method: 'POST',
-                    redirect: 'follow'
-                };
 
-                fetch("http://localhost:2000/show_price", requestOptions)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .catch(error => console.log('error', error));
-            }
 
             function filterFunction() {
                 var input, filter, ul, li, a, i;
@@ -64,7 +80,7 @@ toggle between hiding and showing the dropdown content */
             }
         </script>
 
-        <button type="button" onclick="price()">price</button>
+        
 
         <label>Модель</label>
         <input type="text" name="model">

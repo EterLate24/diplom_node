@@ -11,6 +11,7 @@ const jwt = require('jsonwebtoken')
 const {formatDateWrong, formatDateBack} = require('./functions')
 const {data} = require('../data')
 const pricelist = require('../models/pricelist')
+const { response } = require('express')
 
 
 // Главная
@@ -76,8 +77,15 @@ router.get('/adminCab', roleMiddleware(['ADMIN']), async (req, res) => {
 
 //Залупка
 router.post('/show_price', (req, res) => {
-    res.status(200).json({message:"succes"})
-    input = req.input
+    // res.status(200).json({message:"succes"})
+    console.log(req.body.chel)
+    let kal = 'ochko'
+    let moch = 'pisa'
+    
+    res.status(200).json({
+        kal,
+        moch
+    }) 
 })
 
 // Кабинет работника
