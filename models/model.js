@@ -5,11 +5,11 @@ const applications = new Schema({
         type: String,
         required: true
     },
-    device_type: {
-        type: Boolean,
-        default: false,
-        required: true
-    },
+    // device_type: {
+    //     type: Boolean,
+    //     default: false,
+    //     required: true
+    // },
     date_create: {
         type: Date,
         required: true
