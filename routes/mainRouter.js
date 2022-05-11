@@ -36,7 +36,8 @@ router.post('/registration', [
 //Страничка регистрации
 router.get('/registration_page', (req, res) => {
     res.render('registration_page', {
-        title: 'EterService - зарегистрироваться'
+        title: 'EterService - зарегистрироваться',
+        cab:true
     })
 })
 //Логин
@@ -158,6 +159,14 @@ router.get('/cab', authMiddleware, async (req, res) => {
     const { cookies } = req
     const phone = JSON.parse(cookies.UserData).phone_number
     const massiv = await applications.find({ phone_number: phone }).lean()
+    massiv.forEach(element => {
+        if (element.date_create != null) {
+            element.date_create = formatDateWrong(element.date_create)
+        }
+        if (element.date_visit != null) {
+            element.date_visit = formatDateWrong(element.date_visit)
+        }
+    })
     res.render('cab', {
         title: 'EterService - личный кабинет',
         massiv,

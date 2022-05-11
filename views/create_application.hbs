@@ -37,8 +37,10 @@
                             <input style="border-radius:0 0 0 10px" name="brand" type="text" placeholder="Бренд.."
                                 id="brand" onkeyup="filterFunction()">
                             <div class="hidden_box" id="hidden_box">
-                                <a onclick="get('Apple')">Apple</a>
-                                <a onclick="get('Samsung')">Samsung</a>
+            
+                                    <a onclick="get('Apple')">Apple</a>
+
+                                    <a onclick="get('Samsung')">Samsung</a>
                             </div>
                         </div>
 
@@ -68,12 +70,27 @@
 
 
                 </div>
-                <button style="width: 300px; height: 27px; border-radius:5px; border:none; color: #D1D1D1; margin-top:50px" type="button" onclick="price()">Узнать приблизительную стоимость</button>
+                <button id="chel"
+                    style="width: 300px; height: 27px; border-radius:5px; border:none;background-color:#F2A83B; color:#fff; margin-top:50px;"
+                    type="button" onclick="price()">Узнать приблизительную стоимость</button>
                 <div id="itog"></div>
-                <button style="width: 300px; height: 60px; border-radius:5px; border:none;background-color:#F2A83B; color:#fff; margin-top:30px" type="submit">Оформить заявку</button>
+                <button
+                    style="width: 300px; height: 60px; border-radius:5px; border:none;background-color:#F2A83B; color:#fff; margin-top:30px"
+                    type="submit">Оформить заявку</button>
             </div>
             <script>
+
+                /*function flip_switch() {
+                    let brand_inp = document.getElementById('brand')
+                    let model_inp = document.getElementById('model')
+
+                    if (brand_inp.value != '' || model_inp.value != '') {
+                        document.getElementById('chel').style.backgroundColor = 'blue'
+                    }
+                }*/
+
                 function price() {
+
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/json");
                     let brand = document.getElementById("brand").value
@@ -112,8 +129,9 @@
                 }
                 function get(name) {
                     document.getElementById("model").value = ''
-                    var input = document.getElementById("brand");
+                    input = document.getElementById("brand");
                     input.value = name
+                    console.log(input)
                 }
 
                 function filterFunction() {

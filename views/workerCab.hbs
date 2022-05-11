@@ -1,5 +1,6 @@
-<h1>Ваши заявки</h1>
 {{#if massiv.length}}
+<div class="table_wrapper">
+    <h2 style="margin-left:50px; margin-top:20px; width: 100%; color:#fff; font-size:28px">Управление:</h2>
     <table id="myTable">
         <tr>
             <th>ID заявки</th>
@@ -61,6 +62,7 @@
         </form>
         {{/each}}
     </table>
+    </div>
 {{else}}
 <h3>НЕТ ЗАЯВОК</h3>
 {{/if}}
