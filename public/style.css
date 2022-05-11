@@ -1,5 +1,5 @@
 body {
-    background: #ffb121
+    background: #FFFFFF
 }
 
 * {
@@ -38,7 +38,6 @@ h6 {
     height: 500px;
     display: flex;
     background: #4F4F4F;
-    border-radius: 10px;
     justify-content: space-between;
 }
 
@@ -48,17 +47,123 @@ h6 {
     color: #FFFFFF;
     margin-left: 100px;
     margin-top: 30px;
-    vertical-align: middle;
 }
 
 .main_box ul {
-    list-style-position: inside;
     text-align: left;
     font-weight: 400;
     font-size: 20px;
-    list-style-image: url(Group.png);
+    list-style-type: none;
 }
 
+.main_box li {
+    padding-left: 100px;
+    margin-bottom: 30px;
+    background-image: url(Group.png);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.main_button {
+    display: flex;
+    justify-content: center;
+    margin-top: -35px;
+}
+
+.contacts {
+    display: flex;
+    justify-content: space-between;
+    margin: 150px 80px;
+}
+
+.contacts_left p{
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+    
+}
+
+/*-----------------------------------------------------------Header*/
+
+.applications{
+    display: flex;
+    justify-content: center;
+    margin: 60px 0;
+}
+.applications_header{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+}
+.applications_input{
+    display: flex;
+    flex-direction: row;
+    width: 840px;
+    height: 430px;
+    justify-content: center;
+    border: #000000 1px solid;
+    border-radius: 10px;
+}
+.applications_input input{
+    width: 310px;
+    height: 46px;
+    border: none;
+    background-color: #EBEBEB;
+    padding: 0 25px;
+    overflow: none;
+    border-radius: 10px;
+    margin-bottom:15px;
+}
+
+#comment{
+    width: 310px;
+    height: 120px;
+    border: none;
+    background-color: #EBEBEB;
+    padding: 10px 25px;
+    overflow: none;
+    border-radius: 10px;
+    margin-bottom:15px;
+    
+}
+
+.applications_input select{
+    width: 155px;
+    height: 46px;
+    border: none;
+    background-color: #EBEBEB;
+    padding: 0 20px;
+}
+.applications_left{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.applications_right{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.applications_right_inputs{
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+    height: 94px;
+    border: #000000 1px solid;
+    border-radius: 10px;
+}
+.applications_right_inputs input{
+    width: 154px;
+    height: 46px;
+}
 
 /*-----------------------------------------------------------Header*/
 
@@ -71,12 +176,35 @@ h6 {
 }
 
 
+/*-----------------------------------------------------------Footer*/
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--clr);
+    min-height: 20vh;
+}
+
+.footer_nav a {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #B4B4B4;
+    text-decoration: none;
+    margin-right: 35px;
+}
+
+.footer_nav a:last-child {
+    margin-right: 0;
+}
+
+
 
 /*----------------------------------------------------------Navigation*/
 
 .nav {
     position: relative;
-    width: 1500px;
     height: 80px;
     background: white;
     display: flex;
@@ -204,12 +332,14 @@ h6 {
 
 /* -----------------------------------------------------Таблицы */
 #myTable {
+    margin: 50px 0;
     border-collapse: collapse;
     width: 100%;
     font-size: 14px;
-    border: 1px solid rgba(0, 0, 0, .3);
+    border: 2px solid rgba(0, 0, 0, .5);
     overflow: hidden;
     border-radius: 10px;
+    background-color: #e8e6e6;
 
 }
 
@@ -217,9 +347,9 @@ h6 {
     text-align: center;
     justify-content: center;
 
-    border-right: 1px solid rgba(0, 0, 0, .3);
+    border-right: 1px solid rgba(0, 0, 0, .5);
     text-transform: uppercase;
-    background-color: white;
+    
     top: 0;
     height: 64px;
 
@@ -228,17 +358,17 @@ h6 {
 #myTable td {
     text-align: center;
     /* padding: 12px; */
-    border-right: 1px solid rgba(0, 0, 0, .3);
+    border-right: 1px solid rgba(0, 0, 0, .5);
 }
 
 #myTable tr {
     /* background-color: #f0f0f0; */
-    border-bottom: 1px solid rgba(0, 0, 0, .3);
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
     background-color: white;
 }
 
 #myTable tr:hover {
-    background-color: #e8e6e6;
+    background-color: #B4B4B4;
 }
 
 .hidden_box {

@@ -14,10 +14,7 @@ const User = new Schema({
         type: String,
         required:true
     },
-    name:{
-        type: String
-    },
-    lastname:{
+    fio:{
         type: String
     },
     roles:[{

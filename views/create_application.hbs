@@ -1,169 +1,189 @@
-<form action="/send_application" method="POST">
-    <h1>Запишитесь на ремонт прямо сейчас!</h1>
-    <div>
-        <label>Номер телефона</label>
-        <input type="text" name="phone_number" value={{phone}}>
-
-        <label>Тип устройства</label>
-        <select name="device_type">
-            <option value="0" selected>Смартфон</option>
-            <option value="1">Планшет</option>
-        </select>
-        <div onmouseenter="show()" onmouseleave="hide()" id="brand_box" class="brand_box">
-            <input name="brand" type="text" placeholder="Бренд.." id="brand" onkeyup="filterFunction()">
-            <div class="hidden_box" id="hidden_box">
-                <a onclick="get('Apple')">Apple</a>
-                <a onclick="get('Samsung')">Samsung</a>
-            </div>
+<div class="applications">
+    <form action="/send_application" method="POST">
+        <div class="applications_header">
+            <h1 style="color:#F2A83B;">Запишитесь на ремонт прямо сейчас!</h1>
+            <h2 style="color: #B9B9B9; margin-bottom:30px">Осталось лишь заполнить заявку</h2>
         </div>
+        <div class="applications_input">
+            <div class="applications_left">
+                <input placeholder="ФИО" type="text" name="fio" value={{fio}}>
 
-        <div onmouseenter="show_model()" onmouseleave="hide_model()" id="model_box" class="model_box">
-            <input name="model" type="text" placeholder="Модель.." id="model" onkeyup="filterFunction_model()">
-            <div class="hidden_box" id="hidden_box_model_apple">
-                <a onclick="get_model('IPhone 5')">IPhone 5</a>
-                <a onclick="get_model('IPhone 6')">IPhone 6</a>
+                <input placeholder="Номер телефона" type="text" name="phone_number" value={{phone}}>
+
+                <input placeholder="Дата Вашего визита" type="datetime-local" name="date_visit">
+
+                <textarea id="comment" placeholder="Комментарий" type="text" name="comment"></textarea>
             </div>
-            <div class="hidden_box" id="hidden_box_model_samsung">
-                <a onclick="get_model('Samsung S10')">Samsung S10</a>
+            <div class="applications_right">
+                <div class="applications_right_inputs">
+                    <div style="display: flex; flex-direction: row">
+                        <select style="border-radius:10px 0 0 0" name="device_type">
+                            <option value="0" selected>Смартфон</option>
+                            <option value="1">Планшет</option>
+                        </select>
+
+                        <select style="border-radius:0 10px 0 0" name="defect" id="defect">
+                            <option value="Дисплей">Дисплей</option>
+                            <option value="Батарея">Батарея</option>
+                            <option value="Кнопки">Кнопки</option>
+                            <option value="Порт зарядки">Порт зарядки</option>
+                            <option value="Камера">Камера</option>
+                            <option value="Плата">Плата</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; flex-direction: row">
+                        <div onmouseenter="show()" onmouseleave="hide()" id="brand_box" class="brand_box">
+                            <input style="border-radius:0 0 0 10px" name="brand" type="text" placeholder="Бренд.."
+                                id="brand" onkeyup="filterFunction()">
+                            <div class="hidden_box" id="hidden_box">
+                                <a onclick="get('Apple')">Apple</a>
+                                <a onclick="get('Samsung')">Samsung</a>
+                            </div>
+                        </div>
+
+                        <div onmouseenter="show_model()" onmouseleave="hide_model()" id="model_box" class="model_box">
+                            <input style="border-radius:0 0 10px 0" name="model" type="text" placeholder="Модель.."
+                                id="model" onkeyup="filterFunction_model()">
+                            <div class="hidden_box" id="hidden_box_model_apple">
+                                <a onclick="get_model('IPhone 5')">IPhone 5</a>
+                                <a onclick="get_model('IPhone 6')">IPhone 6</a>
+                            </div>
+                            <div class="hidden_box" id="hidden_box_model_samsung">
+                                <a onclick="get_model('Samsung S10')">Samsung S10</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <button style="width: 300px; height: 27px; border-radius:5px; border:none; color: #D1D1D1; margin-top:50px" type="button" onclick="price()">Узнать приблизительную стоимость</button>
+                <div id="itog"></div>
+                <button style="width: 300px; height: 60px; border-radius:5px; border:none;background-color:#F2A83B; color:#fff; margin-top:30px" type="submit">Оформить заявку</button>
             </div>
-        </div>
-        <select name="defect" id="defect">
-            <option value="Дисплей">Дисплей</option>
-            <option value="Батарея">Батарея</option>
-            <option value="Кнопки">Кнопки</option>
-            <option value="Порт зарядки">Порт зарядки</option>
-            <option value="Камера">Камера</option>
-            <option value="Плата">Плата</option>
-        </select>
-        <button type="button" onclick="price()">Узнать приблизительную стоимость</button>
-        <div id="itog"></div>
-        <script>
-            function price() {
-                var myHeaders = new Headers();
-                myHeaders.append("Content-Type", "application/json");
-                let brand = document.getElementById("brand").value
-                let model = document.getElementById("model").value
-                let defect = document.getElementById("defect").value
-                var raw = JSON.stringify({
-                    brand,
-                    model,
-                    defect
-                });
+            <script>
+                function price() {
+                    var myHeaders = new Headers();
+                    myHeaders.append("Content-Type", "application/json");
+                    let brand = document.getElementById("brand").value
+                    let model = document.getElementById("model").value
+                    let defect = document.getElementById("defect").value
+                    var raw = JSON.stringify({
+                        brand,
+                        model,
+                        defect
+                    });
 
-                var requestOptions = {
-                    method: 'POST',
-                    headers: myHeaders,
-                    body: raw,
-                    redirect: 'follow'
-                };
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: raw,
+                        redirect: 'follow'
+                    };
 
-                fetch("http://localhost:2000/show_price", requestOptions)
-                    .then(response => response.text())
-                    .then(result => {
+                    fetch("http://localhost:2000/show_price", requestOptions)
+                        .then(response => response.text())
+                        .then(result => {
 
-                        itog = document.getElementById("itog");
-                        itog.innerHTML = "<h1>" + JSON.parse(result).price + "</h1>";
-                    })
-                    .catch(error => console.log('error', error));
+                            itog = document.getElementById("itog");
+                            itog.innerHTML = "<p style='text-align:center'>Приблизительная стоимость Вашего ремонта:<br> " + JSON.parse(result).price + " рублей</p>";
+                        })
+                        .catch(error => console.log('error', error));
 
 
-            }
-            //brands
-            function show() {
-                document.getElementById('hidden_box').classList.toggle("box");
-            }
-            function hide() {
-                document.getElementById('hidden_box').classList.remove("box");
-            }
-            function get(name) {
-                document.getElementById("model").value = ''
-                var input = document.getElementById("brand");
-                input.value = name
-            }
+                }
+                //brands
+                function show() {
+                    document.getElementById('hidden_box').classList.toggle("box");
+                }
+                function hide() {
+                    document.getElementById('hidden_box').classList.remove("box");
+                }
+                function get(name) {
+                    document.getElementById("model").value = ''
+                    var input = document.getElementById("brand");
+                    input.value = name
+                }
 
-            function filterFunction() {
-                
-                var input, filter, ul, li, a, i;
-                input = document.getElementById("brand");
-                filter = input.value.toUpperCase();
-                div = document.getElementById("brand_box");
-                a = div.getElementsByTagName("a");
-                for (i = 0; i < a.length; i++) {
-                    txtValue = a[i].textContent || a[i].innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        a[i].style.display = "";
-                    } else {
-                        a[i].style.display = "none";
+                function filterFunction() {
+
+                    var input, filter, ul, li, a, i;
+                    input = document.getElementById("brand");
+                    filter = input.value.toUpperCase();
+                    div = document.getElementById("brand_box");
+                    a = div.getElementsByTagName("a");
+                    for (i = 0; i < a.length; i++) {
+                        txtValue = a[i].textContent || a[i].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            a[i].style.display = "";
+                        } else {
+                            a[i].style.display = "none";
+                        }
                     }
                 }
-            }
-            //models
-            function show_model() {
-                brand_input = document.getElementById("brand").value
-                if(brand_input == 'Apple'){
-                    document.getElementById('hidden_box_model_apple').classList.toggle("box");
-                }
-                if(brand_input == 'Samsung')
-                {
-                    document.getElementById('hidden_box_model_samsung').classList.toggle("box");
-                }
-                
-            }
-            function hide_model() {
-                brand_input = document.getElementById("brand").value
-                if(brand_input == 'Apple'){
-                    document.getElementById('hidden_box_model_apple').classList.remove("box");
-                }else{
-                    document.getElementById('hidden_box_model_samsung').classList.remove("box");
-                }
-            }
-            function get_model(name) {
-                var input = document.getElementById("model");
-                input.value = name
-            }
+                //models
+                function show_model() {
+                    brand_input = document.getElementById("brand").value
+                    if (brand_input == 'Apple') {
+                        document.getElementById('hidden_box_model_apple').classList.toggle("box");
+                    }
+                    if (brand_input == 'Samsung') {
+                        document.getElementById('hidden_box_model_samsung').classList.toggle("box");
+                    }
 
-            function filterFunction_model() {
-                var input, filter, ul, li, a, i;
-                input = document.getElementById("model");
-                filter = input.value.toUpperCase();
-                div = document.getElementById("model_box");
-                a = div.getElementsByTagName("a");
-                hidden_apple = document.getElementById('hidden_box_model_apple')
-                hidden_samsung = document.getElementById('hidden_box_model_samsung')
-                brand_input = document.getElementById("brand").value
-                if(brand_input == 'Apple'){
-                    hidden_apple.classList.toggle('box')
-                }else{
-                    hidden_samsung.classList.toggle('box')
                 }
-                
-                for (i = 0; i < a.length; i++) {
-                    txtValue = a[i].textContent || a[i].innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        a[i].style.display = "";
+                function hide_model() {
+                    brand_input = document.getElementById("brand").value
+                    if (brand_input == 'Apple') {
+                        document.getElementById('hidden_box_model_apple').classList.remove("box");
                     } else {
-                        a[i].style.display = "none";
+                        document.getElementById('hidden_box_model_samsung').classList.remove("box");
                     }
                 }
-            }
+                function get_model(name) {
+                    var input = document.getElementById("model");
+                    input.value = name
+                }
 
-            
-        </script>
+                function filterFunction_model() {
+                    var input, filter, ul, li, a, i;
+                    input = document.getElementById("model");
+                    filter = input.value.toUpperCase();
+                    div = document.getElementById("model_box");
+                    a = div.getElementsByTagName("a");
+                    hidden_apple = document.getElementById('hidden_box_model_apple')
+                    hidden_samsung = document.getElementById('hidden_box_model_samsung')
+                    brand_input = document.getElementById("brand").value
+                    if (brand_input == 'Apple') {
+                        hidden_apple.classList.toggle('box')
+                    } else {
+                        hidden_samsung.classList.toggle('box')
+                    }
+
+                    for (i = 0; i < a.length; i++) {
+                        txtValue = a[i].textContent || a[i].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            a[i].style.display = "";
+                        } else {
+                            a[i].style.display = "none";
+                        }
+                    }
+                }
 
 
+            </script>
+        </div>
 
-        <label>Модель</label>
-        <input type="text" name="model">
-
-        <label>Поломка</label>
-        <input type="text" name="defect">
-
-        <label>Дата Вашего визита</label>
-        <input type="datetime-local" name="date_visit">
-
-        <label>Комментарий</label>
-        <input type="text" name="comment">
-
-    </div>
-    <button type="submit">Create!!!</button>
-</form>
+    </form>
+</div>
