@@ -111,12 +111,6 @@ router.post('/show_price', async (req, res) => {
             price: card[0].price
         })
     }
-
-
-    let kal = 'ochko'
-    let moch = 'pisa'
-
-
 })
 
 // Кабинет работника
