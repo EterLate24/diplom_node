@@ -283,7 +283,7 @@ h6 {
     background: orange;
     border-radius: 50%;
     border: 6px solid var(--clr);
-    transition: .5s;
+    /* transition: .5s; */
 }
 
 .indicator::before {
