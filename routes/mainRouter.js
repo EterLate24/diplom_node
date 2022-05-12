@@ -227,22 +227,22 @@ router.get('/contacts', (req, res) => {
 })
 
 //Страничка редактирования заявок
-router.get('/edit_applications', (req, res) => {
-        _id = req.query._id
-        phone_number = req.query.phone_number,
-        device_type = req.query.device_type,
-        fio = req.query.fio
-        brand = req.query.brand,
-        model = req.query.model,
-        defect = req.query.defect,
-        comment = req.query.comment,
-        admin_comment = req.query.admin_comment,
-        date_visit = formatDateBack(req.query.date_visit),
-        worker = req.query.worker,
-        Status = req.query.status,
-        approximate_cost = req.query.approximate_cost
-        end_cost = req.query.end_cost
-        date_complete = formatDateBack(req.query.date_complete)
+router.post('/edit_applications', (req, res) => {
+        _id = req.body._id
+        phone_number = req.body.phone_number,
+        device_type = req.body.device_type,
+        fio = req.body.fio
+        brand = req.body.brand,
+        model = req.body.model,
+        defect = req.body.defect,
+        comment = req.body.comment,
+        admin_comment = req.body.admin_comment,
+        date_visit = formatDateBack(req.body.date_visit),
+        worker = req.body.worker,
+        Status = req.body.status,
+        approximate_cost = req.body.approximate_cost
+        end_cost = req.body.end_cost
+        date_complete = formatDateBack(req.body.date_complete)
     res.render('edit_applications', {
         _id,
         phone_number,
@@ -283,7 +283,6 @@ router.post('/save_applications', async (req, res) => {
         date_complete: req.body.date_complete
 
     })
-    //await poc.save()
     res.redirect('/adminCab')
 })
 

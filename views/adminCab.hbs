@@ -49,7 +49,7 @@
                 <td>{{date_complete}}</td>
                 <td>{{status}}</td>
                 <td>
-                    <input type="image" src="edit.svg" form={{_id}} formaction="/edit_applications" formmethod="get"
+                    <input type="image" src="edit.svg" form={{_id}} formaction="/edit_applications" formmethod="post"
                         width="25px" height="25px">
                 </td>
                 <td>
@@ -68,7 +68,7 @@
                 <input type="hidden" name="date_create" value="{{date_create}}"></input>
                 <input type="hidden" name="date_visit" value="{{date_visit}}"></input>
                 <input type="hidden" name="status" value="{{status}}"></input>
-                <input type="hidden" name="worker" value={{worker}}></input>
+                <input type="hidden" name="worker" value="{{worker}}"></input>
                 <input type="hidden" name="approximate_cost" value="{{approximate_cost}}"></input>
                 <input type="hidden" name="date_complete" value="{{date_complete}}"></input>
                 <input type="hidden" name="end_cost" value="{{end_cost}}"></input>

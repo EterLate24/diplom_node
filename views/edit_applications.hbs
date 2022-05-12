@@ -1,5 +1,6 @@
 <h1>Редактировать заявку c ID:{{_id}}</h1>
 <form id="save" class="edit" action="/save_applications" method="post">
+<input name="_id" type="hidden" value="{{_id}}">
     <div class="edit_box">
         <div>
             <label for="phone_number">Номер телефона</label>
