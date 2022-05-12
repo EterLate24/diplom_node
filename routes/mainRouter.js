@@ -53,10 +53,6 @@ router.get('/enter', (req, res) => {
 
 //Выход из аккаунта
 router.get('/out', (req, res) => {
-    // data.forEach(elem =>{
-    //     let pidor = new pricelist(elem)
-    //     pidor.save()
-    // })
     res.clearCookie('UserHash')
     res.clearCookie('UserData')
     res.redirect('/enter')
@@ -96,9 +92,9 @@ router.post('/show_price', async (req, res) => {
         Promise.all([brand, defect]).then(result => {
             if (result[0] == null) {
                 res.status(200).json({
-                    price: result[1].price * 1.2
+                    price: result[1].price * 1.1
                 })
-            } else {
+            } else{
                 price = result[0].coef * result[1].price
                 res.status(200).json({
                     price

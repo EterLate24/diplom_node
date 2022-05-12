@@ -41,6 +41,10 @@
                                 <a onclick="get('Apple')">Apple</a>
 
                                 <a onclick="get('Samsung')">Samsung</a>
+
+                                <a onclick="get('Xiaomi')">Xiaomi</a>
+
+                                <a onclick="get('Huawei')">Huawei</a>
                             </div>
                         </div>
 
@@ -48,11 +52,38 @@
                             <input style="border-radius:0 0 10px 0" name="model" type="text" placeholder="Модель.."
                                 id="model" onkeyup="filterFunction_model()">
                             <div class="hidden_box" id="hidden_box_model_apple">
-                                <a onclick="get_model('IPhone 5')">IPhone 5</a>
-                                <a onclick="get_model('IPhone 6')">IPhone 6</a>
+                                
+                                    <a onclick="get_model('IPhone 5')">IPhone 5</a>
+                                    <a onclick="get_model('IPhone 6')">IPhone 6</a>
+                                    <a onclick="get_model('IPhone 7')">IPhone 7</a>
+                                    <a onclick="get_model('IPhone 8')">IPhone 8</a>
+                                    <a onclick="get_model('IPhone X')">IPhone X</a>
+                                    <a onclick="get_model('IPhone XS')">IPhone XS</a>
+                                    <a onclick="get_model('IPhone XS Max')">IPhone XS Max</a>
+                               
+                                    <a onclick="get_model('IPhone 11')">IPhone 11</a>
+                                    <a onclick="get_model('IPhone 11 Pro')">IPhone 11 Pro</a>
+                                    <a onclick="get_model('IPhone 11 Pro Max')">IPhone 11 Pro Max</a>
+                                    <a onclick="get_model('IPhone 12')">IPhone 12</a>
+                                    <a onclick="get_model('IPhone 12 Pro')">IPhone 12 Pro</a>
+                                    <a onclick="get_model('IPhone 12 Pro Max')">IPhone 12 Pro Max</a>
                             </div>
                             <div class="hidden_box" id="hidden_box_model_samsung">
-                                <a onclick="get_model('Samsung S10')">Samsung S10</a>
+                                <a onclick="get_model('S5')">S5</a>
+                                <a onclick="get_model('S6')">S6</a>
+                                <a onclick="get_model('S7')">S7</a>
+                                <a onclick="get_model('S8')">S8</a>
+                                <a onclick="get_model('S9')">S9</a>
+                                <a onclick="get_model('S10')">S10</a>
+                                <a onclick="get_model('S20')">S20</a>
+                            </div>
+                            <div class="hidden_box" id="hidden_box_model_xiaomi">
+                                <a onclick="get_model('Mi 11')">Mi 11</a>
+                                <a onclick="get_model('Mi 11 Pro')">Mi 11 Pro</a>
+                            </div>
+                            <div class="hidden_box" id="hidden_box_model_huawei">
+                                <a onclick="get_model('Mate 40')">Mate 40</a>
+                                <a onclick="get_model('Mate 40 Pro')">Mate 40 Pro</a>
                             </div>
                         </div>
 
@@ -69,13 +100,13 @@
             </div>
             <script>
                 var dtt = document.getElementById('txtbox')
-                    dtt.onfocus = function (event) {
-                        this.type = 'datetime-local';
-                        this.focus();
-                    }
-                    
+                dtt.onfocus = function (event) {
+                    this.type = 'datetime-local';
+                    this.focus();
+                }
+
                 function price() {
-                    
+
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/json");
                     let brand = document.getElementById("brand").value
@@ -117,7 +148,6 @@
                     document.getElementById("model").value = ''
                     input = document.getElementById("brand");
                     input.value = name
-                    console.log(input)
                 }
 
                 function filterFunction() {
@@ -145,14 +175,27 @@
                     if (brand_input == 'Samsung') {
                         document.getElementById('hidden_box_model_samsung').classList.toggle("box");
                     }
+                    if (brand_input == 'Xiaomi') {
+                        document.getElementById('hidden_box_model_xiaomi').classList.toggle("box");
+                    }
+                    if (brand_input == 'Huawei') {
+                        document.getElementById('hidden_box_model_huawei').classList.toggle("box");
+                    }
 
                 }
                 function hide_model() {
                     brand_input = document.getElementById("brand").value
                     if (brand_input == 'Apple') {
                         document.getElementById('hidden_box_model_apple').classList.remove("box");
-                    } else {
+                    }
+                    if (brand_input == 'Samsung') {
                         document.getElementById('hidden_box_model_samsung').classList.remove("box");
+                    }
+                    if (brand_input == 'Xiaomi') {
+                        document.getElementById('hidden_box_model_xiaomi').classList.remove("box");
+                    }
+                    if (brand_input == 'Huawei') {
+                        document.getElementById('hidden_box_model_huawei').classList.remove("box");
                     }
                 }
                 function get_model(name) {
@@ -168,11 +211,20 @@
                     a = div.getElementsByTagName("a");
                     hidden_apple = document.getElementById('hidden_box_model_apple')
                     hidden_samsung = document.getElementById('hidden_box_model_samsung')
+                    hidden_xiaomi = document.getElementById('hidden_box_model_xiaomi')
+                    hidden_huawei = document.getElementById('hidden_box_model_huawei')
                     brand_input = document.getElementById("brand").value
                     if (brand_input == 'Apple') {
                         hidden_apple.classList.toggle('box')
-                    } else {
+                    }
+                    if (brand_input == 'Samsung') {
                         hidden_samsung.classList.toggle('box')
+                    }
+                    if (brand_input == 'Xiaomi') {
+                        hidden_xiaomi.classList.toggle('box')
+                    }
+                    if (brand_input == 'Huawei') {
+                        hidden_huawei.classList.toggle('box')
                     }
 
                     for (i = 0; i < a.length; i++) {
