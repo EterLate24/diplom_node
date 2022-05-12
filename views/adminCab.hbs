@@ -1,11 +1,12 @@
 {{#if massiv.length}}
 <div class="table_wrapper">
     <h2 style="margin-left:50px; margin-top:20px; width: 100%; color:#fff; font-size:28px">Управление:</h2>
-    <table id="myTable">
+    <table style="font-size: 11px;" id="myTable">
         <tr>
             <th>ID заявки</th>
             <th>Номер телефона</th>
             <th>Тип устройства</th>
+            <th>ФИО</th>
             <th>Брэнд</th>
             <th>Модель</th>
             <th>Вид поломки</th>
@@ -14,6 +15,9 @@
             <th>Комментарий клиента</th>
             <th>Комментарий администратора</th>
             <th>Работник</th>
+            <th>Приблизительная стоимость</th>
+            <th>Конечная стоимость</th>
+            <th>Дата выполнения</th>
             <th>Статус заявки</th>
             <th>Изменить</th>
             <th>Удалить</th>
@@ -31,6 +35,7 @@
                     Телефон
                     {{/if}}
                 </td>
+                <td>{{fio}}</td>
                 <td>{{brand}}</td>
                 <td>{{model}}</td>
                 <td>{{defect}}</td>
@@ -39,6 +44,9 @@
                 <td>{{comment}}</td>
                 <td>{{admin_comment}}</td>
                 <td>{{worker}}</td>
+                <td>{{approximate_cost}}</td>
+                <td>{{end_cost}}</td>
+                <td>{{date_complete}}</td>
                 <td>{{status}}</td>
                 <td>
                     <input type="image" src="edit.svg" form={{_id}} formaction="/edit_applications" formmethod="get"
@@ -53,7 +61,7 @@
                 <input type="hidden" name="phone_number" value={{phone_number}}></input>
                 <input type="hidden" name="device_type" value={{device_type}}></input>
                 <input type="hidden" name="brand" value="{{brand}}"></input>
-                <input type="hidden" name="model" value={{model}}></input>
+                <input type="hidden" name="model" value="{{model}}"></input>
                 <input type="hidden" name="defect" value="{{defect}}"></input>
                 <input type="hidden" name="comment" value="{{comment}}"></input>
                 <input type="hidden" name="admin_comment" value="{{admin_comment}}"></input>
@@ -61,6 +69,10 @@
                 <input type="hidden" name="date_visit" value="{{date_visit}}"></input>
                 <input type="hidden" name="status" value="{{status}}"></input>
                 <input type="hidden" name="worker" value={{worker}}></input>
+                <input type="hidden" name="approximate_cost" value="{{approximate_cost}}"></input>
+                <input type="hidden" name="date_complete" value="{{date_complete}}"></input>
+                <input type="hidden" name="end_cost" value="{{end_cost}}"></input>
+                <input type="hidden" name="fio" value="{{fio}}"></input>
             </tr>
         </form>
         {{/each}}

@@ -6,11 +6,11 @@
         </div>
         <div class="applications_input">
             <div class="applications_left">
-                <input placeholder="ФИО" type="text" name="fio" value={{fio}}>
+                <input placeholder="ФИО" type="text" name="fio" value='{{fio}}'>
 
                 <input placeholder="Номер телефона" type="text" name="phone_number" value={{phone}}>
 
-                <input placeholder="Дата Вашего визита" type="datetime-local" name="date_visit">
+                <input placeholder="Дата Вашего визита" type="text" id="txtbox" name="date_visit">
 
                 <textarea id="comment" placeholder="Комментарий" type="text" name="comment"></textarea>
             </div>
@@ -37,10 +37,10 @@
                             <input style="border-radius:0 0 0 10px" name="brand" type="text" placeholder="Бренд.."
                                 id="brand" onkeyup="filterFunction()">
                             <div class="hidden_box" id="hidden_box">
-            
-                                    <a onclick="get('Apple')">Apple</a>
 
-                                    <a onclick="get('Samsung')">Samsung</a>
+                                <a onclick="get('Apple')">Apple</a>
+
+                                <a onclick="get('Samsung')">Samsung</a>
                             </div>
                         </div>
 
@@ -57,18 +57,6 @@
                         </div>
 
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
                 <button id="chel"
                     style="width: 300px; height: 27px; border-radius:5px; border:none;background-color:#F2A83B; color:#fff; margin-top:50px;"
@@ -77,20 +65,17 @@
                 <button
                     style="width: 300px; height: 60px; border-radius:5px; border:none;background-color:#F2A83B; color:#fff; margin-top:30px"
                     type="submit">Оформить заявку</button>
+                <input type="hidden" name="approximate_cost" id="approximate_cost">
             </div>
             <script>
-
-                /*function flip_switch() {
-                    let brand_inp = document.getElementById('brand')
-                    let model_inp = document.getElementById('model')
-
-                    if (brand_inp.value != '' || model_inp.value != '') {
-                        document.getElementById('chel').style.backgroundColor = 'blue'
+                var dtt = document.getElementById('txtbox')
+                    dtt.onfocus = function (event) {
+                        this.type = 'datetime-local';
+                        this.focus();
                     }
-                }*/
-
+                    
                 function price() {
-
+                    
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/json");
                     let brand = document.getElementById("brand").value
@@ -115,6 +100,7 @@
 
                             itog = document.getElementById("itog");
                             itog.innerHTML = "<p style='text-align:center'>Приблизительная стоимость Вашего ремонта:<br> " + JSON.parse(result).price + " рублей</p>";
+                            document.getElementById('approximate_cost').value = JSON.parse(result).price
                         })
                         .catch(error => console.log('error', error));
 

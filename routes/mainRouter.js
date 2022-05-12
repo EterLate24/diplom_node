@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 router.post('/registration', [
     check('username', 'Имя пользователя не может быть пустым').notEmpty(),
     check('password', 'Пароль должен быть больше 4 и меньше 15 символов').isLength({ min: 4, max: 15 }),
-    check('phone_number', 'Неверный формат номера телефона').isMobilePhone('ru-RU')
+    //check('phone_number', 'Неверный формат номера телефона').isMobilePhone('ru-RU')
 ],
     controller.registration)
 
@@ -71,6 +71,9 @@ router.get('/adminCab', roleMiddleware(['ADMIN']), async (req, res) => {
         }
         if (element.date_visit != null) {
             element.date_visit = formatDateWrong(element.date_visit)
+        }
+        if (element.date_complete != null) {
+            element.date_complete = formatDateWrong(element.date_complete)
         }
     })
     res.render('adminCab', {
@@ -117,7 +120,7 @@ router.post('/show_price', async (req, res) => {
 router.get('/workerCab', roleMiddleware(['WORKER']), async (req, res) => {
     const { cookies } = req
     const user = JSON.parse(cookies.UserData)
-    const massiv = await applications.find({ worker: user.name + ' ' + user.lastname }).lean()
+    const massiv = await applications.find({ worker: user.fio}).lean()
     massiv.forEach(element => {
         if (element.date_create != null) {
             element.date_create = formatDateWrong(element.date_create)
@@ -175,8 +178,10 @@ router.get('/create_application', (req, res) => {
     const { cookies } = req
     if ('UserData' in cookies) {
         const phone = JSON.parse(cookies.UserData).phone_number
+        const fio = JSON.parse(cookies.UserData).fio
         res.render('create_application', {
             phone,
+            fio,
             title: 'EterService - запись',
             create_application: true
         })
@@ -195,16 +200,24 @@ router.post('/send_application', async (req, res) => {
     let now = new Date()
     const poc = new applications({
         phone_number: req.body.phone_number,
+        fio: req.body.fio,
         device_type: req.body.device_type,
         brand: req.body.brand,
         model: req.body.model,
         defect: req.body.defect,
         comment: req.body.comment,
         date_visit: req.body.date_visit,
-        date_create: now
+        date_create: now,
+        approximate_cost: req.body.approximate_cost,
     })
     await poc.save()
-    res.redirect('/')
+    const {cookies} = req
+    if('UserData' in cookies){
+        res.redirect('/cab')
+    }else{
+        res.redirect('/')
+    }
+    
 
 })
 
@@ -219,9 +232,10 @@ router.get('/contacts', (req, res) => {
 
 //Страничка редактирования заявок
 router.get('/edit_applications', (req, res) => {
-    _id = req.query._id
-    phone_number = req.query.phone_number,
+        _id = req.query._id
+        phone_number = req.query.phone_number,
         device_type = req.query.device_type,
+        fio = req.query.fio
         brand = req.query.brand,
         model = req.query.model,
         defect = req.query.defect,
@@ -229,7 +243,10 @@ router.get('/edit_applications', (req, res) => {
         admin_comment = req.query.admin_comment,
         date_visit = formatDateBack(req.query.date_visit),
         worker = req.query.worker,
-        Status = req.query.status
+        Status = req.query.status,
+        approximate_cost = req.query.approximate_cost
+        end_cost = req.query.end_cost
+        date_complete = formatDateBack(req.query.date_complete)
     res.render('edit_applications', {
         _id,
         phone_number,
@@ -242,6 +259,10 @@ router.get('/edit_applications', (req, res) => {
         date_visit,
         Status,
         worker,
+        end_cost,
+        approximate_cost,
+        date_complete,
+        fio,
         title: 'EterService - редактировать',
         cab: true
     })
@@ -259,7 +280,11 @@ router.post('/save_applications', async (req, res) => {
         admin_comment: req.body.admin_comment,
         status: req.body.Status,
         worker: req.body.worker,
-        date_visit: req.body.date_visit
+        fio: req.body.fio,
+        date_visit: req.body.date_visit,
+        approximate_cost: req.body.approximate_cost,
+        end_cost: req.body.end_cost,
+        date_complete: req.body.date_complete
 
     })
     //await poc.save()

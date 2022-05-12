@@ -1,42 +1,90 @@
-<h1>Редактировать</h1>
-    <form action="/save_applications" method="post">
-        <label for="_id">ID</label>
-        <input readonly type="text" name="_id" value={{_id}}>
+<h1>Редактировать заявку c ID:{{_id}}</h1>
+<form id="save" class="edit" action="/save_applications" method="post">
+    <div class="edit_box">
+        <div>
+            <label for="phone_number">Номер телефона</label>
+            <input type="text" name="phone_number" value={{phone_number}}>
+        </div>
+        <div>
+            <label for="device_type">Тип устройства</label>
+            <input type="text" name="device_type" value={{device_type}}>
+        </div>
+    </div>
+    <div class="edit_box">
+        <div>
+            <label for="fio">ФИО</label>
+            <input type="text" name="fio" value="{{fio}}">
+        </div>
+        <div>
+            <label for="brand">Брэнд</label>
+            <input type="text" name="brand" value="{{brand}}">
+        </div>
+    </div>
+    <div class="edit_box">
+        <div>
+            <label for="model">Модель</label>
+            <input type="text" name="model" value="{{model}}">
+        </div>
+        <div>
+            <label for="admin_comment">Комментарий администратора</label>
+            <input type="text" name="admin_comment" value="{{admin_comment}}">
+            
+        </div>
+    </div>
+    <div class="edit_box">
+        <div>
+            <label for="date_visit">Дата визита</label>
+            <input type="datetime-local" name="date_visit" value="{{date_visit}}">
+        </div>
+        <div>
+            <label for="comment">Комментарий клиента</label>
+            <input type="text" name="comment" value="{{comment}}">
+        </div>
+    </div>
+    <div class="edit_box">
+        <div>
+            <label for="defect">Вид поломки</label>
+            <input type="text" name="defect" value={{defect}}>
+        </div>
+        <div>
+            <label for="approximate_cost">Приблизительная стоимость</label>
+            <input type="text" name="approximate_cost" value="{{approximate_cost}}">
+        </div>
+    </div>
+    <div class="edit_box">
+        <div>
+            <label for="date_complete">Дата выполнения</label>
+            <input type="datetime-local" name="date_complete" value="{{date_complete}}">
+        </div>
+        <div>
+            <label for="end_cost">Конечная стоимость</label>
+            <input type="text" name="end_cost" value={{end_cost}}>
+            
+        </div>
+    </div>
+    <div class="edit_box">
+        <div>
+            <label for="worker">Работник</label>
+            <select name="worker" id="worker">
+                <option value="Колдашев Рамиль Рустамович">Колдашев Рамиль Рустамович</option>
+                <option value="Нагибин Владислав Александрович">Нагибин Владислав Александрович</option>
+                <option value="Черемнов Степан Дмитриеви">Черемнов Степан Дмитриеви</option>
+                <option value="Климонтов Роберт Владимирович">Климонтов Роберт Владимирович</option>
+            </select>
+        </div>
+        <div>
+            <label for="Status">Статус заявки</label>
+            <select name="Status">
+                <option value="В обработке">В обработке</option>
+                <option value="В работе">В работе</option>
+                <option value="Выполнена">Выполнена</option>
+                <option value="Отклонена">Отклонена</option>
+            </select>
+        </div>
+    </div>
 
-        <label for="phone_number">Номер телефона</label>
-        <input type="text" name="phone_number" value={{phone_number}}>
-
-        <label for="device_type">Тип устройства</label>
-        <input  type="text" name="device_type" value={{device_type}}>
-
-        <label for="brand">Брэнд</label>
-        <input  type="text" name="brand" value="{{brand}}">
-
-        <label for="model">Модель</label>
-        <input  type="text" name="model" value={{model}}>
-
-        <label for="defect">Вид поломки</label>
-        <input  type="text" name="defect" value={{defect}}>
-
-        <label for="date_visit">Дата визита</label>
-        <input  type="datetime-local" name="date_visit" value="{{date_visit}}">
-
-        <label for="comment">Комментарий клиента</label>
-        <input  type="text" name="comment" value="{{comment}}">
-
-        <label for="admin_comment">Комментарий администратора</label>
-        <input  type="text" name="admin_comment" value="{{admin_comment}}">
-
-        <label for="worker">Работник</label>
-        <select name="worker" id="worker">
-            <option value="Рамиль Колдашев">Рамиль Колдашев</option>
-            <option value="Владислав Нагибин">Владислав Нагибин</option>
-            <option value="Степан Черемнов">Степан Черемнов</option>
-            <option value="Роберт Климонтов">Роберт Климонтов</option>
-        </select>
-
-        <label for="Status">Статус заявки</label>
-        <input  type="text" name="Status" value="{{Status}}">
-
-        <button type="submit">Сохранить</button>
-    </form>
+    
+</form>
+<div style="display:flex; justify-content:center;margin-top:30px">
+<button  form="save" type="submit">Сохранить</button>
+</div>
