@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 router.post('/registration', [
     check('username', 'Имя пользователя не может быть пустым').notEmpty(),
     check('password', 'Пароль должен быть больше 4 и меньше 15 символов').isLength({ min: 4, max: 15 }),
-    //check('phone_number', 'Неверный формат номера телефона').isMobilePhone('ru-RU')
+    check('phone_number', 'Неверный формат номера телефона').isMobilePhone('ru-RU')
 ],
     controller.registration)
 
@@ -92,7 +92,7 @@ router.post('/show_price', async (req, res) => {
         Promise.all([brand, defect]).then(result => {
             if (result[0] == null) {
                 res.status(200).json({
-                    price: result[1].price * 1.1
+                    price: result[1].price * 1.2
                 })
             } else{
                 price = result[0].coef * result[1].price
